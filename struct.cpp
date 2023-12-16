@@ -1,53 +1,53 @@
-#include <iostream>
+#include <bits/stdc++.h> 
+
+
 using namespace std;
-struct info{
-	char hoten[100];
-	char mssv[100];
-	float diem; 
-}; 
-//void swap(info &a, info &b){
-//	char tam1[100]=a.hoten;
-//	char tam2[100]=a.mssv;
-//	float tam3=a.diem;
-//	a.hoten=b.hoten;
-//	a.mssv=b.mssv; 
-//	a.diem=b.diem;
-//	b.diem=tam3;
-//	b.mssv=tam2; 
-//	b.hoten=tam1; 
-//} 
-int main(){
-	int n;
-	cout<<"Nhap so sinh vien can nhap thong tin: ";
-	cin>>n;
-	info sinhvien[n];
-	for(int i=0;i<n;i++){
-		cout<<"Sinh vien "<<i<<endl; 
-		cout<<"Nhap ten sinh vien: ";
-		cin.ignore();  
-		cin.getline(sinhvien[i].hoten, 100);
-		cout<<"Nhap ma so sinh vien: ";
-		cin>>sinhvien[i].mssv;
-		cout<<"Nhap diem: ";
-		cin>>sinhvien[i].diem; 
-	} 
-//	float S=0; 
-//	for(int i=0;i<n;i++){
-//		cout<<"Ten sinh vien: "<<sinhvien[i].hoten<<"       ||MSSV: "<<sinhvien[i].mssv<<"       ||Diem: "<<sinhvien[i].diem<<endl;
-//		S=S+sinhvien[i].diem; 
-//	} 
-//	cout<<"Diem trung binh: "<<S/n; 
-	for(int i=0;i<n-1;i++){
-		for(int j=0;j<=n-i-1;j++){
-			if(sinhvien[j].diem>sinhvien[j+1].diem) {
-				info tamp=sinhvien[j+1]; 
-				sinhvien[j+1]=sinhvien[j];		
-				sinhvien[j]=tamp;		 		 
-			}
-		} 
+
+
+struct SinhVien {
+
+   char hoTen[100]; char mssv[20]; double diemTrungBinh;
+
+};
+
+int main()  {
+	int avg;
+   SinhVien dssv[1000]; int soLuongSV;
+
+   cout << "Nhap so luong sinh vien: "; cin >> soLuongSV;
+
+   for(int i = 1; i <= soLuongSV; i++) {
+
+    	cout << "- Nhap SV thu " << i << ":" << endl;
+    	
+    	cin.ignore();
+    	
+    	cout << "+ Ho ten: ";
+
+		cin.getline(dssv[i].hoTen, 100);
+
+//		cin.ignore();
+
+    	cout << "+ MSSV: ";
+
+        cin.getline(dssv[i].mssv, 20);
+
+    	cout << "+ Diem trung binh: "; cin >> dssv[i].diemTrungBinh;
+   }
+   for (int i=1;i<=soLuongSV;i++){
+		avg+=dssv[i].diemTrungBinh;
+   }
+   avg/=soLuongSV;
+   cout<<"Diem Trung Binh : "<<avg<<endl;
+	ofstream fs;
+	fs.open("C:\\Users\\nguye\\Documents\\Zalo Received Files\\Files\\Struct1.txt") ;
+	for (int i=1;i<=soLuongSV;i++){
+		fs<<i<<"."<<endl;
+		fs<<dssv[i].hoTen<<endl;
+		fs<<dssv[i].mssv<<endl;
+		fs<<dssv[i].diemTrungBinh<<endl;
 	}
-	for(int i=0;i<n;i++){
-		cout<<"Ten sinh vien: "<<sinhvien[i].hoten<<"       ||MSSV: "<<sinhvien[i].mssv<<"       ||Diem: "<<sinhvien[i].diem<<endl;
-	} 
-	return 0; 
-} 
+	fs<<"Diem Trung Binh : "<<avg<<" ."<<endl;
+	fs.close();
+	return 0;
+}
