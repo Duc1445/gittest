@@ -117,6 +117,7 @@ int main(){
 //	maxmang(mang,x,y);
 	xapxepphantu(mang,x,y); 
 	output(mang,x,y);
+	court<<"Hello";
 //	timsonguyento(mang,x,y); 
 //	findmang(mang,x,y); 
 	return 0; 
