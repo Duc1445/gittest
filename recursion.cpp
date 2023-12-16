@@ -92,6 +92,7 @@ int main(){
 	input(a, n); 
 	sort(a, n);
 	dmang(a, n); 
+	cout<<"Hello";
 	
 //	output(a, n); 
 	return 0; 
